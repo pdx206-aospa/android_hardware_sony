@@ -55,6 +55,7 @@ class Power : public ::aidl::android::hardware::power::BnPower {
     std::unique_ptr<InteractionHandler> mInteractionHandler;
     std::atomic<bool> mSustainedPerfModeOn;
     std::atomic<bool> mBatterySaverOn;
+    int32_t mServiceVersion;
 };
 
 }  // namespace pixel

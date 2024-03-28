@@ -24,6 +24,7 @@ cc_library {
         "disp-power/DisplayLowPower.cpp",
         "disp-power/InteractionHandler.cpp",
     ],
+    cpp_std: "gnu++20",
     shared_libs: [
         "libbase",
         "libcutils",
@@ -35,12 +36,12 @@ cc_library {
 
 cc_binary {
     name: "android.hardware.power-service.sony-libperfmgr",
+    defaults: ["android.hardware.power-ndk_shared"],
     relative_install_path: "hw",
     init_rc: ["aidl/android.hardware.power-service.sony-libperfmgr.rc"],
     vintf_fragments: ["aidl/android.hardware.power-service.sony.xml"],
     vendor: true,
     shared_libs: [
-        "android.hardware.power-V4-ndk",
         "libbase",
         "libcutils",
         "liblog",
@@ -50,13 +51,17 @@ cc_binary {
         "libperfmgr",
         "libprocessgroup",
         "pixel-power-ext-V1-ndk",
-        "libprotobuf-cpp-full",
     ],
     srcs: [
+        "aidl/BackgroundWorker.cpp",
         "aidl/service.cpp",
         "aidl/Power.cpp",
         "aidl/PowerExt.cpp",
         "aidl/PowerHintSession.cpp",
         "aidl/PowerSessionManager.cpp",
+        "aidl/UClampVoter.cpp",
+        "aidl/SessionTaskMap.cpp",
+        "aidl/SessionValueEntry.cpp",
     ],
+    cpp_std: "gnu++20",
 }
